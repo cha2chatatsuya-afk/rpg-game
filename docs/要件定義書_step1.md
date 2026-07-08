@@ -118,7 +118,3 @@ Character(String name, int hp, int attackPower)
 - [ ] 勝者が表示される
 
 ---
-
-## 次のフェーズの予告
-
-フェーズ1ができたら、次は `Character` を親クラスにして `Hero`（勇者）と `Monster`（モンスター）に分け、`attack()` をそれぞれ違う動きに **オーバーライド** していきます。今回作る `Character` がそのまま土台になるので、丁寧に作っておくと後がラクです。
