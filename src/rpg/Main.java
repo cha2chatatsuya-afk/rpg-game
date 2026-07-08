@@ -11,16 +11,21 @@ public class Main {
         slime.showStatus();
 
         while(hero.isAlive() &&slime.isAlive()){
-            System.out.println(hero.getName()+"の攻撃！");
-            System.out.println(slime.getName()+"に"+hero.getattackPower()+"のダメージ！");
             hero.attack(slime);
             slime.showStatus();
 
-            System.out.println(slime.getName()+"の攻撃！");
-            System.out.println(hero.getName()+"に"+slime.getattackPower()+"のダメージ！");
+            if(!slime.isAlive()){
+                break;
+            }
+
             slime.attack(hero);
             hero.showStatus();
+
+            if(!hero.isAlive()){
+                break;
+            }
         }
+        
         if(!hero.isAlive()){
             System.out.println(hero.getName()+"は倒れた！");
             System.out.println(slime.getName()+"の勝ち！");
