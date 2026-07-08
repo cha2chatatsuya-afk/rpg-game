@@ -1,10 +1,11 @@
 package rpg;
 
 import rpg.model.Character;
+import rpg.model.Hero;
 
 public class Main {
     public static void main(String[] args) {
-        Character hero = new Character("勇者",100 , 10);
+        Hero hero = new Hero("勇者",100 , 10);
         Character slime = new Character("スライム", 30, 3);
         System.out.println(hero.getName()+"は"+slime.getName()+"に遭遇した");
         hero.showStatus();
@@ -25,7 +26,7 @@ public class Main {
                 break;
             }
         }
-        
+
         if(!hero.isAlive()){
             System.out.println(hero.getName()+"は倒れた！");
             System.out.println(slime.getName()+"の勝ち！");
