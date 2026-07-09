@@ -2,9 +2,9 @@ package rpg.model;
 
 public class Character {
     //フィールド
-    private String name;
-    private int hp;
-    private int attackPower;
+    protected String name;
+    protected int hp;
+    protected int attackPower;
 
     //コンストラクタ
     public Character(String name, int hp, int attackPower){
@@ -19,8 +19,8 @@ public class Character {
         System.out.println(this.name+"の攻撃！");
         System.out.println(target.getName()+"に"+this.getAttackPower()+"のダメージ！");
         target.hp=target.hp-this.attackPower;
-        
     }
+
     //*このキャラのhpが０以上かを判定して返す */
     public boolean isAlive(){
         if(this.hp>0){
