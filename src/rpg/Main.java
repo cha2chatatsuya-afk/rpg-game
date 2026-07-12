@@ -1,12 +1,11 @@
 package rpg;
 
-import rpg.model.Character;
-import rpg.model.Hero;
+import rpg.model.*;
 
 public class Main {
     public static void main(String[] args) {
         Hero hero = new Hero("勇者",100 , 10);
-        Character slime = new Character("スライム", 30, 3);
+        Monster slime = new Monster("スライム", 30, 8);
         System.out.println(hero.getName()+"は"+slime.getName()+"に遭遇した");
         hero.showStatus();
         slime.showStatus();
