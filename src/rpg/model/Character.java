@@ -1,5 +1,5 @@
 package rpg.model;
-//差分
+
 public abstract class Character {
     //フィールド
     protected String name;
@@ -20,7 +20,7 @@ public abstract class Character {
     
     //*自分のhpをdamage分だけ減らす */
     public void takeDamage(int damage){
-        this.hp =this.hp-damage;
+        this.hp =Math.max(this.hp-damage,0);
     }
 
     //*このキャラのhpが０以上かを判定して返す */

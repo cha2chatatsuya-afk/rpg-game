@@ -1,37 +1,14 @@
 package rpg;
 
+import rpg.battle.Battle;
 import rpg.model.*;
 
 public class Main {
     public static void main(String[] args) {
         Hero hero = new Hero("勇者",100 , 10);
-        Monster slime = new Monster("スライム", 30, 8);
-        System.out.println(hero.getName()+"は"+slime.getName()+"に遭遇した");
-        hero.showStatus();
-        slime.showStatus();
+        Monster monster = new Monster("スライム", 30, 8);
 
-        while(hero.isAlive() &&slime.isAlive()){
-            hero.attack(slime);
-            slime.showStatus();
-
-            if(!slime.isAlive()){
-                break;
-            }
-
-            slime.attack(hero);
-            hero.showStatus();
-
-            if(!hero.isAlive()){
-                break;
-            }
-        }
-
-        if(!hero.isAlive()){
-            System.out.println(hero.getName()+"は倒れた！");
-            System.out.println(slime.getName()+"の勝ち！");
-        }else{
-            System.out.println(slime.getName()+"は倒れた！");
-            System.out.println(hero.getName()+"の勝ち！");
-        }
+        Battle battle = new Battle(hero,monster);
+        battle.start();
     }
 }
