@@ -15,7 +15,7 @@ public class Hero extends Character {
 
         System.out.println(this.name + "の会心の一撃！");
         System.out.println(target.getName() + "に" + damage + "のダメージ！");
-        target.hp = target.hp - damage;
+        target.takeDamage(damage);
     }
 
 }

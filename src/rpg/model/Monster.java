@@ -13,6 +13,6 @@ public class Monster extends Character {
     public void attack(Character target) {
         System.out.println(this.name + "のかみつき！");
         System.out.println(target.getName() + "に" + this.attackPower + "のダメージ！"); 
-        target.hp = target.hp - this.attackPower;
+        target.takeDamage(this.attackPower);
     }
 }

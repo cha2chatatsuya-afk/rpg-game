@@ -1,6 +1,6 @@
 package rpg.model;
 
-public class Character {
+public abstract class Character {
     //フィールド
     protected String name;
     protected int hp;
@@ -15,10 +15,12 @@ public class Character {
 
     //メソッド
     //*相手（引数）のhpを自分のattackPower分減らす */
-    public void attack(Character target){
-        System.out.println(this.name+"の攻撃！");
-        System.out.println(target.getName()+"に"+this.getAttackPower()+"のダメージ！");
-        target.hp=target.hp-this.attackPower;
+    public abstract void attack(Character target);
+
+    
+    //*自分のhpをdamage分だけ減らす */
+    public void takeDamage(int damage){
+        this.hp =this.hp-damage;
     }
 
     //*このキャラのhpが０以上かを判定して返す */
