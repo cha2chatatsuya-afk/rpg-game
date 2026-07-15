@@ -1,5 +1,5 @@
 package rpg.model;
-
+//差分
 public abstract class Character {
     //フィールド
     protected String name;
