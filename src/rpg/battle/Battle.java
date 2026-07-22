@@ -1,52 +1,72 @@
 package rpg.battle;
 
+import java.util.List;
+
 import rpg.model.Hero;
 import rpg.model.Monster;
 
 public class Battle {
-    //フィールド（そのクラスで何を登場させたいか）
+    // フィールド（そのクラスで何を登場させたいか）
     private Hero hero;
-    private Monster monster;
+    private List<Monster> monsters;
+    private Monster winMonster;
 
-    //コンストラクタ
-    public Battle(Hero hero, Monster monster){
+    // コンストラクタ
+    public Battle(Hero hero,List<Monster> monsters) {
         this.hero = hero;
-        this.monster =monster;
+        this.monsters =monsters;
     }
 
-    //メソッド
-    //*ゲームを進行するメソッド */
-    public void start(){
-        System.out.println(this.hero.getName()+"は"+this.monster.getName()+"に遭遇した");
+    // メソッド
+    // *バトルを進行させるメソッド */
+    public void start() {
         this.hero.showStatus();
-        this.monster.showStatus();
 
-        while(this.hero.isAlive() &&this.monster.isAlive()){
-            this.hero.attack(this.monster);
-            this.monster.showStatus();
-
-            if(!this.monster.isAlive()){
-                break;
-            }
-
-            this.monster.attack(this.hero);
-            this.hero.showStatus();
-
+        for(Monster m :monsters){
             if(!this.hero.isAlive()){
                 break;
             }
+            fight(m);
         }
-    
         showResult();
         
+        
+
     }
-    private void showResult(){
-        if(!this.hero.isAlive()){
-            System.out.println(this.hero.getName()+"は倒れた！");
-            System.out.println(this.monster.getName()+"の勝ち！");
-        }else{
-            System.out.println(this.monster.getName()+"は倒れた！");
-            System.out.println(this.hero.getName()+"の勝ち！");
+
+    //*敵と戦うメソッド */
+    private void fight (Monster monster){
+        System.out.println(this.hero.getName() + "は" + monster.getName() + "に遭遇した");
+        monster.showStatus();
+        while (this.hero.isAlive() && monster.isAlive()) {
+            this.hero.attack(monster);
+            monster.showStatus();
+
+            if (!monster.isAlive()) {
+                System.out.println(monster.getName()+"は倒れた！");
+                break;
+            }
+
+            monster.attack(this.hero);
+            this.hero.showStatus();
+
+            if (!this.hero.isAlive()) {
+                System.out.println(this.hero.getName()+"は倒れた！");
+                this.winMonster =monster;
+                break;
+            }
+        }
+    }
+        
+    
+
+    private void showResult() {
+        if (this.hero.isAlive()) {
+            System.out.println("全員撃破！");
+            System.out.println(this.hero.getName() + "の大勝利！");
+        } else {
+            System.out.println( "GAME OVER");
+            System.out.println(this.winMonster.getName()+"に敗れた…");
         }
     }
 
